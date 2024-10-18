@@ -18,7 +18,7 @@
         <li><a href="#" onclick="showMain('projects')">Projects</a></li>
         <li><a href="#" onclick="showMain('photography')">Photography Work</a></li>
         <li><a href="#" onclick="showMain('ringing')">Change Ringing</a></li>
-        <li><a href="#" onclick="showMain('gaming')">Gaming</a></li>
+        <!-- <li><a href="#" onclick="showMain('gaming')">Gaming</a></li> -->
       </ul>
     </nav>
 
@@ -47,10 +47,22 @@
       </section>
     </main>
 
+    <!-- projects -->
+    <main id="projects" hidden>
+      <h2>Projects</h2>
+      <p>
+        Notable projects:
+        <ul>
+          <li><a href="https://github.com/RochX/virus-research-paper" target="_blank">Icosahedral Virus Transformations</a></li>
+          <li><a href="https://github.com/RochX/hornethq-2.0-integrated" target="_blank">HornetHQ 2.0 Prototype</a></li>
+        </ul>
+      </p>
+    </main>
+
     <!-- photography work -->
     <main id="photography" hidden>
       <h2>Photography</h2>
-      <p>Here's some my best photos.</p>
+      <p>Here's some of my best photos.</p>
       <section>
         <img src="img/bellevue jan2024.png" alt="Photo of Bellevue Pl, Kalamazoo, Michigan in January 2024." />
         <img src="img/bmc drumming.jpeg" alt="Photo of Xavier Silva drumming during Kalamazoo College's 2024 production of 'Be More Chill'." />
@@ -97,6 +109,7 @@
         mains.forEach(function(main) {main.hidden=true})
 
         new_main = document.getElementById(mainId)
+        console.log(mainId)
 
         if (new_main === null) {
           document.getElementById('404').hidden=false
