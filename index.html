@@ -1,7 +1,134 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>WIP</h1>
-<p>Under construction website for Xavier Silva.</p>
-</body>
+<html lang="en">
+  <head>
+    <title>Xavier Silva</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    <!-- header -->
+    <header>
+      <h2>Xavier Silva's Website</h2>
+    </header>
+
+    <!-- navigation -->
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showMain('about')">Home</a></li>
+        <li><a href="#" onclick="showMain('resume')">Resume</a></li>
+        <!-- <li><a href="documents/Silva_Resume.pdf" target="_blank">Resume</a></li> -->
+        <li><a href="#" onclick="showMain('projects')">Projects</a></li>
+        <li><a href="#" onclick="showMain('photography')">Photography Work</a></li>
+        <li><a href="#" onclick="showMain('ringing')">Change Ringing</a></li>
+        <!-- <li><a href="#" onclick="showMain('gaming')">Gaming</a></li> -->
+      </ul>
+    </nav>
+
+    <!-- about me -->
+    <main id="about">
+      <img src="img/personal_image.jpg" alt="Image of Xavier Silva" id="personal_image"/>
+
+      <section id="about-text">
+        <h2>About Me</h2>
+        <p>
+          Hey there! My name is Xavier Silva.
+          Currently I'm job seeking to start my career in tech.
+        </p>
+        <p>
+          I earned my Bachelor of Arts in Mathematics and Computer Science graduating <i>summa cum laude</i> from Kalamazoo College in 2024.
+          Some notable projects of mine include my senior thesis on <a href="https://github.com/RochX/virus-research-paper" target="_blank">icosahedral virus transformations</a> and the <a href="https://github.com/RochX/hornethq-2.0-integrated" target="_blank">HornetHQ 2.0 prototype</a> from an advanced software development class (links go to the relevant GitHub repositories).
+        </p>
+        <p>  
+          Beyond the academics, I got involved with numerous music ensembles, though the one the stuck with me the most (and that I still do!) is the art of English Change Ringing.
+          In fact, it's such a big part of my life I have a whole page on this website dedicated to it!
+        </p>
+        <p>
+          I also have a hobby in photography, which I picked up from taking a couple of photography classes during college.
+          I've put up a few of my best works on this website under the photography page.
+        </p>
+      </section>
+    </main>
+
+    <main id="resume" hidden>
+      <h2>Resume</h2>
+      Click <a href="documents/Silva_Resume.pdf" target="_blank">here</a> to view my resume.
+    </main>
+
+    <!-- projects -->
+    <main id="projects" hidden>
+      <h2>Projects</h2>
+      <p>
+        Notable projects:
+        <ul>
+          <li><a href="https://github.com/RochX/virus-research-paper" target="_blank">Icosahedral Virus Transformations</a></li>
+          <li><a href="https://github.com/RochX/hornethq-2.0-integrated" target="_blank">HornetHQ 2.0 Prototype</a></li>
+        </ul>
+      </p>
+    </main>
+
+    <!-- photography work -->
+    <main id="photography" hidden>
+      <h2>Photography</h2>
+      <p>Here's some of my best photos.</p>
+      <section id="photos">
+        <img src="img/bellevue jan2024.png" alt="Photo of Bellevue Pl, Kalamazoo, Michigan in January 2024." />
+        <img src="img/bmc drumming.jpeg" alt="Photo of Xavier Silva drumming during Kalamazoo College's 2024 production of 'Be More Chill'." />
+        <img src="img/bmc setup.jpeg" alt="Photo of the drumset used during Kalamazoo College's 2024 production of 'Be More Chill'." />
+        <img src="img/celery flats apr2024.jpeg" alt="Trial by Celery Flats in Portage, Michigan, April 2024." />
+      </section>
+    </main>
+
+    <!-- change ringing -->
+    <main id="ringing" hidden>
+      <section>
+        <h2>Change Ringing</h2>
+        <p>
+          Kalamazoo College's Stetson Chapel is home to a set of eight English Change Ringing bells.
+          Unlike most church bells within the United States, these bells are meant to rung by a team of people, each person with their own bell.
+          The bells are also connected to a wheel, so they rotate a full 360 degrees.
+          I think this gif neatly shows how ringing works.
+        </p>
+        <img src="img/six-bell-ringers-animation.gif">Gif credit: <a href="https://almondsburychurch.org.uk/bellringers/new-to-bell-ringing/">https://almondsburychurch.org.uk/bellringers/new-to-bell-ringing/</a></img>
+        <p>
+          Because of how we ring these bells, traditional melodies cannot be rung on these bells.
+          Instead we ring "changes", which are essentially mathematical premutations.
+        </p>
+        <p>
+          One of the most challenging things for ringers to achieve are what are known as quarter peals.
+          Quarter peals consist of at least 1,250 permutations such that no permutation is repeated (or is at least repeated the minimal number of times).
+
+          A list of all quarter peals I've ever rung is hosted on the BellBoard: <a href="https://bellboard.uk/search.php?ringer=Xavier+Silva">https://bellboard.uk/search.php?ringer=Xavier+Silva</a>
+        </p>
+      </section>
+    </main>
+
+    <!-- 404 equivalent -->
+    <main id="404" hidden>
+      <p>Whoops! No main content here, get back to about me <a href="#" onclick="showMain('about')">here</a>.</p>
+    </main>
+
+    <!-- footer -->
+    <footer>
+      <p>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></p>
+      <p>Disclaimer: This website is still a work in progress. Last updated 10-18-2024.</p>
+    </footer>
+
+    <!-- javascript -->
+    <script>
+      function showMain(mainId) {
+        var mains = document.querySelectorAll('main')
+        mains.forEach(function(main) {main.hidden=true})
+
+        new_main = document.getElementById(mainId)
+        console.log(mainId)
+
+        if (new_main === null) {
+          document.getElementById('404').hidden=false
+        }
+        else {
+          new_main.hidden=false
+        }
+      }
+    </script>
+  </body>
 </html>
