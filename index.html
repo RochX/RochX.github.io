@@ -1,7 +1,74 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<html lang="en">
+  <head>
+    <title>Xavier Silva</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    <!-- header -->
+    <header>
+      Xavier Silva's Website
+    </header>
+
+    <!-- navigation -->
+    <nav>
+      <ul>
+        <li><a href="#" onclick="showMain('about')">Home</a></li>
+        <li><a href="#" onclick="showMain('projects')">Projects</a></li>
+        <li><a href="#" onclick="showMain('photography')">Photography Work</a></li>
+        <li><a href="#" onclick="showMain('ringing')">Change Ringing</a></li>
+        <li><a href="#" onclick="showMain('gaming')">Gaming</a></li>
+      </ul>
+    </nav>
+
+    <!-- main -->
+    <main id="about">
+      <img src="#" alt="Personal Image" />
+
+      <section>
+        <h2>About Me</h2>
+        <p>
+          Hey there! My name is Xavier Silva.
+          Currently I'm job seeking to start my career in tech.
+        </p>
+
+        <p>
+          I earned my Bachelor of Arts in Mathematics and Computer Science from Kalamazoo College in 2024.
+          Beyond the academics, I got involved with numerous music ensembles, though the one the stuck with me the most (and still do!) is the art of English Change Ringing.
+          In fact, it's such a big part of my life I have a whole page on this website dedicated to it!
+        </p>
+      </section>
+    </main>
+
+    <main id="photography" hidden>
+      <h2>Photography</h2>
+      <p>Here's some photos.</p>
+      <p>WIP</p>
+    </main>
+
+    <main id="404" hidden>
+      <p>Whoops! No main content here, get back to about me <a href="#" onclick="showMain('about')">here</a>.</p>
+    </main>
+
+    <!-- footer -->
+    <footer>Contact me at: xavierwsilva@gmail.com</footer>
+
+    <!-- javascript -->
+    <script>
+      function showMain(mainId) {
+        var mains = document.querySelectorAll('main')
+        mains.forEach(function(main) {main.hidden=true})
+
+        new_main = document.getElementById(mainId)
+
+        if (new_main === null) {
+          document.getElementById('404').hidden=false
+        }
+        else {
+          new_main.hidden=false
+        }
+      }
+    </script>
+  </body>
 </html>
