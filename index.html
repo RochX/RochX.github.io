@@ -8,13 +8,15 @@
   <body>
     <!-- header -->
     <header>
-      Xavier Silva's Website
+      <h2>Xavier Silva's Website</h2>
     </header>
 
     <!-- navigation -->
     <nav>
       <ul>
         <li><a href="#" onclick="showMain('about')">Home</a></li>
+        <li><a href="#" onclick="showMain('resume')">Resume</a></li>
+        <!-- <li><a href="documents/Silva_Resume.pdf" target="_blank">Resume</a></li> -->
         <li><a href="#" onclick="showMain('projects')">Projects</a></li>
         <li><a href="#" onclick="showMain('photography')">Photography Work</a></li>
         <li><a href="#" onclick="showMain('ringing')">Change Ringing</a></li>
@@ -45,6 +47,11 @@
           I've put up a few of my best works on this website under the photography page.
         </p>
       </section>
+    </main>
+
+    <main id="resume" hidden>
+      <h2>Resume</h2>
+      Click <a href="documents/Silva_Resume.pdf" target="_blank">here</a> to view my resume.
     </main>
 
     <!-- projects -->
@@ -101,7 +108,10 @@
     </main>
 
     <!-- footer -->
-    <footer>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></footer>
+    <footer>
+      <p>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></p>
+      <p>Disclaimer: This website is still a work in progress. Last updated 10-18-2024.</p>
+    </footer>
 
     <!-- javascript -->
     <script>
