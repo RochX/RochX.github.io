@@ -45,7 +45,8 @@ main {
   justify-content: center;
   /* background-color: blueviolet; */
   padding: 5px;
-  width: 95%
+  min-width: 60%;
+  max-width: 95%;
 }
 
 main#about {
@@ -69,6 +70,11 @@ section#photos {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+
+  img {
+    margin-left: 0.25cm;
+    margin-right: 0.25cm;
+  }
 }
 
 section#about-text {
@@ -78,7 +84,8 @@ section#about-text {
 /* imgs */
 img {
   width: 300px;
-  padding: 4px
+  padding: 4px;
+  margin-top: 0.5em
 }
 
 img#personal_image {
