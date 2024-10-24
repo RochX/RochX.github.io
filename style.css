@@ -16,13 +16,11 @@ nav {
   ul {
     list-style-type: none;
     background-color: black;
-    padding: 16px;
     text-align: center;
     margin: 0;
 
     li {
-      height: 16px;
-      display: inline;
+      display: inline-block;
       font-size: large;
 
       a {
@@ -30,7 +28,8 @@ nav {
         text-align: center;
         text-justify: center;
         white-space: nowrap;
-        padding: 14px 16px
+        padding: 0.45cm;
+        line-height: 1.5cm;
       }
 
       a:hover {
