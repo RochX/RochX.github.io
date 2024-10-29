@@ -54,6 +54,12 @@ main#about {
   flex-wrap: wrap;
 }
 
+main#ringing {
+  img {
+    background-color: black;
+  }
+}
+
 /* hidden attribute is silly with flex boxes...
 see: https://meowni.ca/hidden.is.a.lie.html */
 [hidden] { display: none !important}
@@ -72,6 +78,7 @@ section#photos {
   justify-content: center;
 
   img {
+    width: 300px;
     margin-left: 0.25cm;
     margin-right: 0.25cm;
   }
@@ -83,19 +90,25 @@ section#about-text {
 
 /* imgs */
 img {
-  width: 300px;
   padding: 4px;
   margin-top: 0.5em
 }
 
 img#personal_image {
+  width: 300px;
   background-color: black;
   vertical-align: middle;
 }
 
 img.align-right {
   float: right;
-  margin: 5px 0 5px 20px;
+  margin-left: 20px;
+}
+
+img.align-center {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer {
@@ -111,5 +124,13 @@ footer {
 
   section#about-text {
     width: 95%;
+  }
+
+  img.align-right {
+    float: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto 10px auto
   }
 }
