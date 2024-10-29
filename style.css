@@ -78,6 +78,7 @@ section#photos {
   justify-content: center;
 
   img {
+    background-color: black;
     width: 300px;
     margin-left: 0.25cm;
     margin-right: 0.25cm;
