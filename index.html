@@ -54,9 +54,11 @@
     </main>
 
     <!-- blog -->
-    <main id="blog">
-      <iframe 
-        src="blog/janus-dev-log-1.html">
+    <main id="blog" hidden>
+      <iframe
+        id="active-blog-post"
+        src="blog/janus-dev-log-1.html"
+        sandbox="allow-same-origin">
       </iframe>
     </main>
 
@@ -159,6 +161,11 @@
         }
         else {
           new_main.hidden=false
+        }
+
+        if (mainId === "blog") {
+          active_blog_post = document.getElementById('active-blog-post')
+          active_blog_post.style.height=(active_blog_post.contentWindow.document.body.scrollHeight+30)+'px';
         }
       }
     </script>

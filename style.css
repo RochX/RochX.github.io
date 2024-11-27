@@ -63,6 +63,14 @@ main#ringing {
   }
 }
 
+main#blog {
+  width: 90%;
+
+  iframe {
+    width: 100%;
+  }
+}
+
 /* hidden attribute is silly with flex boxes...
 see: https://meowni.ca/hidden.is.a.lie.html */
 [hidden] { display: none !important}
