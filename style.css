@@ -1,11 +1,14 @@
 /* body */
 body {
   font-family: Helvetica, sans-serif;
+  background-color: lightgray;
+}
+
+body.website {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: lightgray;
   margin: 0;
 }
 

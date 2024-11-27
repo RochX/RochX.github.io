@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   
-  <body>
+  <body class="website">
     <!-- header -->
     <header>
       <h2>Xavier Silva's Website</h2>
@@ -17,6 +17,7 @@
     <nav>
       <ul>
         <li><a href="#" onclick="showMain('about')">Home</a></li>
+        <li><a href="#" onclick="showMain('blog')">Personal Blog</a></li>
         <li><a href="#" onclick="showMain('resume')">Resume</a></li>
         <!-- <li><a href="documents/Silva_Resume.pdf" target="_blank">Resume</a></li> -->
         <li><a href="#" onclick="showMain('projects')">Projects</a></li>
@@ -50,6 +51,13 @@
           I've put up a few of my best works on this website under the photography page.
         </p>
       </section>
+    </main>
+
+    <!-- blog -->
+    <main id="blog">
+      <iframe 
+        src="blog/janus-dev-log-1.html">
+      </iframe>
     </main>
 
     <main id="resume" hidden>
@@ -134,7 +142,7 @@
     <!-- footer -->
     <footer>
       <p>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></p>
-      <p>Last updated 11-12-2024.</p>
+      <p>Last updated 11-27-2024.</p>
     </footer>
 
     <!-- javascript -->
