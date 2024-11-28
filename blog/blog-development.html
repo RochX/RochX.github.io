@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog-style.css">
+  </head>
+  <body class="blog-post">
+    <h2>Blog Development for This Website</h2>
+    Posted by Xavier Silva on 11-28-2024
+    <hr>
+    <p>Website development is difficult.</p>
+    <p>
+      I learned about the same-origin policy today while trying to develop a personal blog for my website.
+      But let's get background on why I learned about this today.
+      As a tenet of my website, I'm trying to keep things as simple as possible, so no React, Angular, or any other web dev frameworks.
+      Just pure HTML and CSS with hints of Javascript to make changing pages work.
+      For the structure of my blog, I figure that each blog post can be its own HTML file for simplicity.
+      But in order to view the posts, I need some sort of HTML element that can both a) load HTML files and b) change its contents.
+      The best option seemed to be by using iframes, by changing the `src` attribute to the particular HTML file I needed.
+      I immediately ran into an obvious issue.
+    </p>
+    <p>
+      That issue is that the height of an iframe is not dynamic by default.
+      In order to change the height of the iframe I needed Javascript.
+      I use Visual Studio Code to develop this website.
+      In VS Code there is a built in web preview, which is nice, but doesn't give all the nice web developer tools you can get with F12 in most modern browsers.
+      In short (summarizing a good couple hours of debugging and frustration), I figured out that viewing my website through the file directly (file:///path/to/file/index.html) vs through a local host changed whether the website can access the `contentWindow.document` of the iframe.
+      Of course I needed to access `contentWindow.document` to change the height of the iframe.
+      So you can imagine my frustration when it seems to work in the VS Code preview but not in my browser of Firefox.
+      Turns out I just needed to host it locally instead of viewing with `file://`.
+    </p>
+    <p><i>Sigh.</i></p>
+    <p>
+      Anyways, <a href="https://stackoverflow.com/questions/48362093/cors-request-blocked-in-locally-opened-html-file">https://stackoverflow.com/questions/48362093/cors-request-blocked-in-locally-opened-html-file</a> is how I <i>finally</i> realized this was the problem.
+      And still, this was an educational experience, even if it severly broke my workflow of actually blogging and designing my Factorio mod.
+      Oh yea, that's why I wanted to get a blog going in the first place, since I figured writing a dev log for my Factorio mod would be a good way to channel my thoughts and ideas into a place that wasn't just hastily thrown together notes.
+      You should see more about that soon.
+    </p>
+  </body>
+</html>

@@ -56,18 +56,16 @@
     <!-- blog -->
     <main id="blog" hidden>
       <ul>
-        <li><a href="#" onclick="showBlogPost('janus-dev-log-1')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
-        <li><a href="#" onclick="showBlogPost('test')">Test post</a></li>
+        <li><a href="#" onclick="loadContent('blog/blog-development.html')">Blog Development for This Website (posted 11-28-2024)</a> </li>
+        <li><a href="#" onclick="loadContent('blog/janus-dev-log-1.html')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
+        <li><a href="#" onclick="loadContent('blog/test.html')">Test Post</a></li>
       </ul>
     </main>
 
     <main id="active-blog-post" hidden>
-      <a href="#" onclick="showMain('blog')">Go back to selection.</a>
-      <br>
-      <iframe
-        id="active-blog-frame"
-        sandbox="allow-same-origin">
-      </iframe>
+      <button onclick="showMain('blog')">Go Back.</button>
+      <br />
+      <iframe id="active-blog-post-iframe" src="" scrolling="no" onload="adjustHeight()"></iframe>
     </main>
 
     <main id="resume" hidden>
@@ -151,8 +149,9 @@
 
     <!-- footer -->
     <footer>
+      <hr>
       <p>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></p>
-      <p>Last updated 11-27-2024.</p>
+      <p>Last updated 11-28-2024.</p>
     </footer>
 
     <!-- javascript -->
@@ -170,27 +169,17 @@
         else {
           new_main.hidden=false
         }
-
-        // important to set the active blog post's source to blank
-        // this prevents the iframe loading before the content changes
-        // see https://www.reddit.com/r/webdev/s/C6fJjcAK00
-        active_blog_post.src = "about:blank"
       }
 
-      const active_blog_post = document.getElementById('active-blog-frame');
-      const ro = new ResizeObserver(function () {
-        const height = active_blog_post.contentDocument.body.scrollHeight;
-        active_blog_post.style.height = `${height+30}px`;
-      })
-      ro.observe(active_blog_post)
+      function loadContent(url) {
+        showMain('active-blog-post')
+        const iframe = document.getElementById('active-blog-post-iframe');
+        iframe.src = url;
+      }
 
-      function showBlogPost(blogName) {
-        showMain("active-blog-post")
-        console.log("showing blog post: " + blogName)
-
-        active_blog_post.src = "blog/" + blogName + ".html";
-        const height = active_blog_post.contentDocument.body.scrollHeight;
-        active_blog_post.style.height = `${height+30}px`;
+      function adjustHeight() {
+        const iframe = document.getElementById('active-blog-post-iframe');
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 20 + 'px';
       }
     </script>
   </body>
