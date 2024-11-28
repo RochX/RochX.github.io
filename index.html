@@ -55,9 +55,18 @@
 
     <!-- blog -->
     <main id="blog" hidden>
+      <ul>
+        <li><a href="#" onclick="showBlogPost('janus-dev-log-1')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
+        <li><a href="#" onclick="showBlogPost('test')">Test post</a></li>
+      </ul>
+    </main>
+
+    <main id="active-blog-post" hidden>
+      <a href="#" onclick="showMain('blog')">Go back to selection.</a>
+      <br>
       <iframe
-        id="active-blog-post"
-        src="blog/janus-dev-log-1.html"
+        id="active-blog-frame"
+        src=""
         sandbox="allow-same-origin">
       </iframe>
     </main>
@@ -162,12 +171,19 @@
         else {
           new_main.hidden=false
         }
-
-        if (mainId === "blog") {
-          active_blog_post = document.getElementById('active-blog-post')
-          active_blog_post.style.height=(active_blog_post.contentWindow.document.body.scrollHeight+30)+'px';
-        }
       }
+
+      function showBlogPost(blogName) {
+        showMain("active-blog-post")
+
+        var active_blog_frame = document.getElementById('active-blog-frame');
+        var active_blog_post = document.getElementById('active-blog-post')
+
+        active_blog_frame.src = "blog/" + blogName + ".html";
+        active_blog_frame.style.height=(active_blog_frame.contentWindow.document.body.scrollHeight+30)+'px';
+      }
+
+      // TODO: resize iframe height as page size changes
     </script>
   </body>
 </html>

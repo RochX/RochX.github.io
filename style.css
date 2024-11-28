@@ -63,7 +63,7 @@ main#ringing {
   }
 }
 
-main#blog {
+main#active-blog-post {
   width: 90%;
 
   iframe {
