@@ -66,7 +66,6 @@
       <br>
       <iframe
         id="active-blog-frame"
-        src=""
         sandbox="allow-same-origin">
       </iframe>
     </main>
@@ -171,12 +170,13 @@
         else {
           new_main.hidden=false
         }
+
+        // important to set the active blog post's source to blank
+        // this prevents the iframe loading before the content changes
+        // see https://www.reddit.com/r/webdev/s/C6fJjcAK00
+        active_blog_post.src = "about:blank"
       }
 
-      
-
-      // TODO: fix size not changing upon switching iframe content
-      // note that when switching it seems like the previously active post pops up for a second, causing height weirdness.
       const active_blog_post = document.getElementById('active-blog-frame');
       const ro = new ResizeObserver(function () {
         const height = active_blog_post.contentDocument.body.scrollHeight;
