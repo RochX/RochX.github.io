@@ -163,7 +163,7 @@
         mains.forEach(function(main) {main.hidden=true})
 
         new_main = document.getElementById(mainId)
-        console.log(mainId)
+        console.log("showing main: " + mainId)
 
         if (new_main === null) {
           document.getElementById('404').hidden=false
@@ -173,17 +173,25 @@
         }
       }
 
+      
+
+      // TODO: fix size not changing upon switching iframe content
+      // note that when switching it seems like the previously active post pops up for a second, causing height weirdness.
+      const active_blog_post = document.getElementById('active-blog-frame');
+      const ro = new ResizeObserver(function () {
+        const height = active_blog_post.contentDocument.body.scrollHeight;
+        active_blog_post.style.height = `${height+30}px`;
+      })
+      ro.observe(active_blog_post)
+
       function showBlogPost(blogName) {
         showMain("active-blog-post")
+        console.log("showing blog post: " + blogName)
 
-        var active_blog_frame = document.getElementById('active-blog-frame');
-        var active_blog_post = document.getElementById('active-blog-post')
-
-        active_blog_frame.src = "blog/" + blogName + ".html";
-        active_blog_frame.style.height=(active_blog_frame.contentWindow.document.body.scrollHeight+30)+'px';
+        active_blog_post.src = "blog/" + blogName + ".html";
+        const height = active_blog_post.contentDocument.body.scrollHeight;
+        active_blog_post.style.height = `${height+30}px`;
       }
-
-      // TODO: resize iframe height as page size changes
     </script>
   </body>
 </html>
