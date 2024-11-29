@@ -55,19 +55,22 @@
 
     <!-- blog -->
     <main id="blog" hidden>
+      <h2>Blog Posts</h2>
       <ul>
-        <li><a href="#" onclick="loadContent('blog/blog-development.html')">Blog Development for This Website (posted 11-28-2024)</a> </li>
-        <li><a href="#" onclick="loadContent('blog/janus-dev-log-1.html')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
-        <li><a href="#" onclick="loadContent('blog/test.html')">Test Post</a></li>
+        <li><a href="#" onclick="loadBlogContent('blog/blog-development.html')">Blog Development for This Website (posted 11-28-2024)</a> </li>
+        <li><a href="#" onclick="loadBlogContent('blog/janus-dev-log-1.html')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
+        <li><a href="#" onclick="loadBlogContent('blog/test.html')">Test Post</a></li>
       </ul>
     </main>
 
     <main id="active-blog-post" hidden>
-      <button onclick="showMain('blog')">Go Back.</button>
+      <button onclick="showMain('blog')">Go back to blog posts.</button>
       <br />
-      <iframe id="active-blog-post-iframe" src="" scrolling="no" onload="adjustHeight()"></iframe>
+      <iframe id="active-blog-post-iframe" src="" scrolling="no" onload="adjustBlogHeight()"></iframe>
+      <button onclick="showMain('blog')">Go back to blog posts.</button>
     </main>
 
+    <!-- resume -->
     <main id="resume" hidden>
       <h2>Resume</h2>
       Click <a href="documents/Silva_Resume.pdf" target="_blank">here</a> to view my resume.
@@ -171,16 +174,21 @@
         }
       }
 
-      function loadContent(url) {
+      function loadBlogContent(url) {
         showMain('active-blog-post')
         const iframe = document.getElementById('active-blog-post-iframe');
         iframe.src = url;
       }
 
-      function adjustHeight() {
+      function adjustBlogHeight() {
         const iframe = document.getElementById('active-blog-post-iframe');
         iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 20 + 'px';
       }
+
+      const active_post_ro = new ResizeObserver(() => {
+        adjustBlogHeight()
+      });
+      active_post_ro.observe(document.getElementById('active-blog-post-iframe'))
     </script>
   </body>
 </html>
