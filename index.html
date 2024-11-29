@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   
-  <body>
+  <body class="website">
     <!-- header -->
     <header>
       <h2>Xavier Silva's Website</h2>
@@ -17,6 +17,7 @@
     <nav>
       <ul>
         <li><a href="#" onclick="showMain('about')">Home</a></li>
+        <li><a href="#" onclick="showMain('blog')">Personal Blog</a></li>
         <li><a href="#" onclick="showMain('resume')">Resume</a></li>
         <!-- <li><a href="documents/Silva_Resume.pdf" target="_blank">Resume</a></li> -->
         <li><a href="#" onclick="showMain('projects')">Projects</a></li>
@@ -52,6 +53,24 @@
       </section>
     </main>
 
+    <!-- blog -->
+    <main id="blog" hidden>
+      <h2>Blog Posts</h2>
+      <ul>
+        <li><a href="#" onclick="loadBlogContent('blog/blog-development.html')">Blog Development for This Website (posted 11-28-2024)</a> </li>
+        <li><a href="#" onclick="loadBlogContent('blog/janus-dev-log-1.html')">Janus Dev Log #1 (posted 11-27-2024)</a></li>
+        <li><a href="#" onclick="loadBlogContent('blog/test.html')">Test Post</a></li>
+      </ul>
+    </main>
+
+    <main id="active-blog-post" hidden>
+      <button onclick="showMain('blog')">Go back to blog posts.</button>
+      <br />
+      <iframe id="active-blog-post-iframe" src="" scrolling="no" onload="adjustBlogHeight()"></iframe>
+      <button onclick="showMain('blog')">Go back to blog posts.</button>
+    </main>
+
+    <!-- resume -->
     <main id="resume" hidden>
       <h2>Resume</h2>
       Click <a href="documents/Silva_Resume.pdf" target="_blank">here</a> to view my resume.
@@ -133,8 +152,9 @@
 
     <!-- footer -->
     <footer>
+      <hr>
       <p>Contact me at: <a href="mailto:xavierwsilva@gmail.com">xavierwsilva@gmail.com</a></p>
-      <p>Last updated 11-12-2024.</p>
+      <p>Last updated 11-28-2024.</p>
     </footer>
 
     <!-- javascript -->
@@ -144,7 +164,7 @@
         mains.forEach(function(main) {main.hidden=true})
 
         new_main = document.getElementById(mainId)
-        console.log(mainId)
+        console.log("showing main: " + mainId)
 
         if (new_main === null) {
           document.getElementById('404').hidden=false
@@ -153,6 +173,22 @@
           new_main.hidden=false
         }
       }
+
+      function loadBlogContent(url) {
+        showMain('active-blog-post')
+        const iframe = document.getElementById('active-blog-post-iframe');
+        iframe.src = url;
+      }
+
+      function adjustBlogHeight() {
+        const iframe = document.getElementById('active-blog-post-iframe');
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 20 + 'px';
+      }
+
+      const active_post_ro = new ResizeObserver(() => {
+        adjustBlogHeight()
+      });
+      active_post_ro.observe(document.getElementById('active-blog-post-iframe'))
     </script>
   </body>
 </html>

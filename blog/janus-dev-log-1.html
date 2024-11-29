@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog-style.css">
+  </head>
+  <body class="blog-post">
+    <h2>Janus Dev Log #1: Inspiration</h2>
+    Posted by Xavier Silva on 11-27-2024
+    <hr>
+    <p><i>
+      This series of blog posts is about a mod I'm creating for the video game Factorio and its expansion Space Age. 
+      If you don't know what Factorio is see <a href="https://factorio.com/">https://factorio.com/</a>.
+    </i></p>
+    <p>
+      With the release of Factorio: Space Age comes a whole new plethora of mechanics introduced to the game, most notably the new planets with unique challenges to overcome.
+      Factorio has been my favorite game for many years now and Space Age furthered that feeling.
+      Despite Space Age being fantastic, I want more.
+      So I decided to develop a mod that would add a new planet into the game with its own unique challenges and mechanics.
+    </p>
+    <p>
+      Welcome to Janus.
+      A planet where none of the currently known natural resources are available.
+      Instead veins of a mysterious, pulsating purple ore appears in the ground.
+      Named "Shiftite", it appears stable in the ground, but once harvested it begins to constantly change between different forms, making it difficult to process into useable material.
+      But after overcoming the challenge of handling this unstable resource, we gain access to spcial processes and machines that allow us to duplicate existing resources and convert resources into other resources.
+    </p>
+    <p>
+      So that's the pitch for Janus, but what does the gameplay look like?
+      My inspiration for this mod comes from the new spoilage mechanic.
+      In Space Age, this is used primarily on the planet Gleba, where biological products turn into spoilage after a set period of time.
+      This emulates fruits and vegatables going bad, like in the real world.
+      However, technically speaking, all spoilage really does is that it adds a flag to an item that tells it what to spoil into after a period of time.
+      Abstractly, spoilage works by saying that item A turns into item B after T seconds.
+      But there is no limitation saying that item B can't also spoil into an item C.
+      So we could have A --> B --> C.
+      Then what if we said that item C spoils into item A.
+      Now we have a loop A --> B --> C --> A.
+      The fact we can have a spoilage loop is the core mechanic of Janus and Shiftite.
+    </p>
+    <p>
+      Our primary ore Shiftite will constantly change between different forms after it is mined.
+      It will be mined in pairs, one in the Alpha form and the other in the Beta form.
+      We then have the following spoilage loops:
+      <ul>
+        <li>Alpha --> Gamma --> Epsilon --> Alpha</li>
+        <li>Beta --> Delta --> Zeta --> Beta</li>
+      </ul>
+      From this we will use different combinations of Shiftite to get all necessary base resources like iron and copper.
+      Further processing in the planet's special building (what exactly that is TBD) will be used to make the planet's science pack.
+      The special building will also allow us change the forms of Shiftite, since notably if we have any of the Alpha forms we cannot make the Beta forms and vise versa.
+    </p>
+    <p>
+      For now this is as far I've designed for this mod, with managing spoilage loops being the primary challenge of Janus.
+      Some big picture considerations I'm thinking about:
+      <ul>
+        <li>Can the planet be done from nothing or do some starting items need to be shipped in?</li>
+        <li>Which resources can be generated purely from Shiftite? Could other planetary resources be made with advanced techs? (i.e. electromagnetic science + new science gives a way to make holminum from Shiftite)</li>
+        <li>Is there more of a reward than just being able to duplicate existing things? 
+          One interesting thought is that using Shiftite refreshes spoilage on any spoilable items when duplicating.
+          This would be an interesting way to "refrigerate" spoilable items, which doesn't exist in Space Age.
+          </li>
+        <li>What fun toys could be given to the player for their efforts?</li>
+      </ul>
+    </p>
+  </body>
+</html>
