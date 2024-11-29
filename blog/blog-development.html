@@ -20,18 +20,18 @@
       Just pure HTML and CSS with hints of Javascript to make changing pages work.
       For the structure of my blog, I figure that each blog post can be its own HTML file for simplicity.
       But in order to view the posts, I need some sort of HTML element that can both a) load HTML files and b) change its contents.
-      The best option seemed to be by using iframes, by changing the `src` attribute to the particular HTML file I needed.
-      I immediately ran into an obvious issue.
+      The best option seemed to be by using an <code>iframe</code>, by changing the <code>src</code> attribute to the particular HTML file I needed.
+      I immediately ran into a glaring issue.
     </p>
     <p>
       That issue is that the height of an iframe is not dynamic by default.
       In order to change the height of the iframe I needed Javascript.
       I use Visual Studio Code to develop this website.
       In VS Code there is a built in web preview, which is nice, but doesn't give all the nice web developer tools you can get with F12 in most modern browsers.
-      In short (summarizing a good couple hours of debugging and frustration), I figured out that viewing my website through the file directly (file:///path/to/file/index.html) vs through a local host changed whether the website can access the `contentWindow.document` of the iframe.
-      Of course I needed to access `contentWindow.document` to change the height of the iframe.
+      In short (summarizing a good couple hours of debugging and frustration), I figured out that viewing my website through the file directly (<code>file:///path/to/file/index.html</code>) causes an uncaught DOM exception when trying to get the <code>contentWindow.document</code> of the iframe.
+      Of course I needed to access <code>contentWindow.document</code> to change the height of the iframe.
       So you can imagine my frustration when it seems to work in the VS Code preview but not in my browser of Firefox.
-      Turns out I just needed to host it locally instead of viewing with `file://`.
+      Turns out I just needed to host it locally and then navigate to <code>localhost</code> instead of viewing with <code>file://</code>.
     </p>
     <p><i>Sigh.</i></p>
     <p>
