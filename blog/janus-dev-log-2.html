@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Blog</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="blog-style.css">
+  </head>
+  <body class="blog-post">
+    <h2>Janus Dev Log #2: Design and Implementation</h2>
+    Posted by Xavier Silva on 12-8-2024
+    <hr>
+    <p><i>
+      This series of blog posts is about a mod I'm creating for the video game Factorio and its expansion Space Age. 
+      If you don't know what Factorio is see <a href="https://factorio.com/">https://factorio.com/</a>.
+    </i></p>
+    <h3>Design</h3>
+    Since the last post I've started better fleshing out the design of the mod.
+    Last time I talked about a spoilage loop for the basic resource, which I'm now calling "Shiftite".
+    There are now a total of 6 basic forms of Shiftite, labeled as alpha, beta, gamma, delta, epsilon, and zeta (the first 6 letters of the Greek alphabet).
+    The spoilage loops are currently designed as:
+    <ul>
+      <li>alpha &#8594; gamma &#8594; epsilon &#8594; alpha</li>
+      <li>beta &#8594; delta &#8594; zeta &#8594; beta</li>
+    </ul>
+    These resources can then be converted into the 6 base resources needed to launch a rocket in the following manner:
+    <ul>
+      <li>alpha &#8594; iron</li>
+      <li>beta &#8594; copper</li>
+      <li>gamma &#8594; stone</li>
+      <li>delta &#8594; water</li>
+      <li>epsilon &#8594; coal</li>
+      <li>zeta &#8594; oil</li>
+    </ul>
+    Getting the exact resources a base needs requires managing how Shiftite spoils.
+    Another way to manage which Shiftite you have involves the "phase change" recipes (unlocked via technology) which gives you access to the recipes:
+    <ul>
+      <li>alpha + gamma + epsilon &#8594; beta + delta + zeta</li>
+      <li>beta + delta + zeta &#8594; alpha + gamma + epsilon</li>
+    </ul>
+    Next is the science pack.
+    The science pack of this planet involves the final forms of Shiftite, omega and psi.
+    Shifite Omega is created by combining each of the 6 basic forms of Shiftite.
+    Shiftite Omega swaps between Shiftite Psi and itself via spoilage.
+    The science pack is created using both omega and psi.
+
+    <p>
+      Most of these recipes have to be done in Janus's special building: the Time Distorter.
+      In order to unlock this building, you have to visit Janus and mine some Shiftite.
+      The planet will also be littered with rocks that contain stone, iron ore, and copper ore so you aren't completely stranded if you forgot to bring resources (similar to Vulcanus).
+    </p>
+    <p>
+      In terms of rewards for making the science pack, currently the rewards are:
+      <ul>
+        <li>Making more advanced resources (such as processing units) directly from Shiftite;</li>
+        <li>Making resources from other planets;</li>
+        <li>Duplicating science packs by adding the correct form of Shiftite.</li>
+      </ul>
+    </p>
+    <h3>Implementation</h3>
+    <p>
+      Implementing these ideas has been a fun and interesting process.
+      Factorio mods are written in Lua.
+      Currently all this mod is doing is adding what are known as "prototypes" to the game.
+      Prototypes are templates for nearly everything in the game.
+      So alot of my coding time has been referencing the Factorio Lua API and looking at examples.
+      For example, this is the prototype for the recipe that converts Shiftite alpha into iron:
+      <pre>
+{
+  type="recipe",
+  name="janus-shiftite-to-iron",
+  category="janus-shiftite",
+  subgroup="janus-basic-from-shiftite",
+  ingredients={{type="item", name="janus-shiftite-alpha", amount=1}},
+  results={{type="item", name="iron-plate", amount=20}},
+  order="a",
+  enabled=false
+}
+      </pre>
+      After writing this code, it appears in game (featuring placeholder graphics):
+      <img src="img/dev-log-2-screenshot.png">
+      Some things are still in progress with implementation, notably crafting times will still need balancing, which I haven't yet decided upon because I want to fully balance the Time Distorter before that.
+      It wouldn't make sense to decide the crafting time if I don't know the crafting speed of the Time Distorter, or what modules I want it to take, etc.
+    </p>
+    <h3>Release?</h3>
+    <p>
+      Currently at time of writing (12-8-2024), this mod is not on the mod portal.
+      I don't intend on releasing until most of the game elements are in place.
+      The main thing I'd like to improve on before releasing is map generation (currently its just Shiftite, no decorations or rocks) and graphics, as most graphics are placeholder.
+    </p>
+    <h3>Next Time</h3>
+    After I get the recipe chains mostly where I want them, I will be focusing primarily on map generation.
+    The map generation system is still prototypes, but is quite a bit more complicated than I was expecting, espically compared to adding items and recipes.
+    I'll also be working on balancing, since I wanted to get all the recipes layed out before I start balancing.
+  </body>
+</html>
