@@ -131,6 +131,15 @@ img.align-center {
   margin-right: auto;
 }
 
+/* footer */
+div#footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 footer {
   margin: 5px;
 }
